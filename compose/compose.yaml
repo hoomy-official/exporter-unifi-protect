@@ -1,0 +1,56 @@
+services:
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - 9090:9090
+    restart: unless-stopped
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prom_data:/prometheus
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=grafana
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,natel-discrete-panel,grafana-piechart-panel
+    volumes:
+      - ./grafana:/etc/grafana/provisioning/datasources
+  unifi-protect:
+    image: ghcr.io/merlindorin/unifi-protect:latest
+    container_name: unifi-protect
+    command:
+      - "serve"
+      - "--labels=656075c1020b6903e40003f4=room:livingroom"
+      - "--labels=656db3e201d7ea03e4000ec3=room:livingroom"
+      - "--labels=656db3e30157ea03e4000ec5=room:bedroom"
+      - "--labels=656db3f60091ea03e4000ec8=room:tvroom"
+      - "--labels=656db3f700a7ea03e4000ecc=room:bathroom"
+      - "--labels=656dbac0039cea03e4000f18=room:office"
+    env_file:
+      - ../.env
+    ports:
+      - 8080:8080
+
+  unpoller:
+    image: ghcr.io/unpoller/unpoller:latest
+    restart: unless-stopped
+    ports:
+      - '9130:9130'
+    container_name: unpoller
+    env_file:
+      - ../.env
+    environment:
+      - UP_INFLUXDB_DISABLE=true
+      - UP_POLLER_DEBUG=true
+      - UP_UNIFI_DYNAMIC=false
+      - UP_PROMETHEUS_HTTP_LISTEN=0.0.0.0:9130
+      - UP_PROMETHEUS_NAMESPACE=unpoller
+volumes:
+  prom_data:

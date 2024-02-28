@@ -1,0 +1,92 @@
+tools:
+  - name: gh
+    version:
+      want: v2.39.1
+    method: github-release
+    with:
+      repo: cli/cli
+
+  # used for signing the checksums file at release
+  - name: cosign
+    version:
+      want: v2.2.3
+    method: github-release
+    with:
+      repo: sigstore/cosign
+
+  - name: quill
+    version:
+      want: v0.4.1
+    method: github-release
+    with:
+      repo: anchore/quill
+
+  - name: chronicle
+    version:
+      want: v0.8.0
+    method: github-release
+    with:
+      repo: anchore/chronicle
+
+  - name: gosimports
+    version:
+      want: v0.3.8
+    method: github-release
+    with:
+      repo: rinchsan/gosimports
+
+  - name: glow
+    version:
+      want: v1.5.1
+    method: github-release
+    with:
+      repo: charmbracelet/glow
+
+  - name: goreleaser
+    version:
+      want: v1.22.1
+    method: github-release
+    with:
+      repo: goreleaser/goreleaser
+
+  - name: golangci-lint
+    version:
+      want: v1.55.2
+    method: github-release
+    with:
+      repo: golangci/golangci-lint
+
+  - name: bouncer
+    version:
+      want: v0.4.0
+    method: github-release
+    with:
+      repo: wagoodman/go-bouncer
+
+  - name: task
+    version:
+      want: v3.31.0
+    method: github-release
+    with:
+      repo: go-task/task
+
+  - name: syft
+    version:
+      want: v0.96.0
+    method: github-release
+    with:
+      repo: anchore/syft
+
+  - name: svu
+    version:
+      want: v1.11.0
+    method: github-release
+    with:
+      repo: caarlos0/svu
+
+  - name: gofumpt
+    version:
+      want: v0.5.0
+    method: github-release
+    with:
+      repo: mvdan/gofumpt
