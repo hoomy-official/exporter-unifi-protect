@@ -80,7 +80,8 @@ dockers:
       - "--label=org.opencontainers.image.name={{.ProjectName}}"
       - "--label=org.opencontainers.image.revision={{.FullCommit}}"
       - "--label=org.opencontainers.image.version={{.Version}}"
-      - "--label=org.opencontainers.image.source={{.GitURL}}"
+      - "--label=org.opencontainers.image.description=Prometheus exporter designed to help monitor your UniFi Protect setup by exporting relevant metrics to Prometheus"
+      - "--label=org.opencontainers.image.source=https://github.com/hoomy-official/exporter-unifi-protect"
 
 # signs our docker image
 # https://goreleaser.com/customization/docker_sign
