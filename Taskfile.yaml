@@ -4,6 +4,7 @@ vars:
   NAME: "exporter-unifi-protect"
   PACKAGE_NAME: "github.com/hoomy-official/exporter-unifi-protect"
   PACKAGES: "internal,cmd"
+  MARKDOWNLINT_ARGS: "--ignore=./dist README.md"
 
 includes:
   default: https://raw.githubusercontent.com/hoomy-official/taskfile-default/main/tasks.yaml
