@@ -26,9 +26,9 @@ import (
 )
 
 type Serve struct {
-	Username string   `env:"USERNAME" help:"Username used to authenticate API calls. It should be a local regular user" required:""`
-	Password string   `env:"PASSWORD" help:"Password used to authenticate API calls" required:""`
-	Host     *url.URL `env:"HOST" help:"Host of the Dream Machine" required:""`
+	Username string   `env:"UNIFI_USERNAME" help:"Username used to authenticate API calls. It should be a local regular user" required:""`
+	Password string   `env:"UNIFI_PASSWORD" help:"Password used to authenticate API calls" required:""`
+	Host     *url.URL `env:"UNIFI_HOST" help:"Host of the Dream Machine" required:""`
 
 	Timeout          time.Duration     `default:"5s" help:"Max duration for collecting data"`
 	MinDetectionSpan time.Duration     `default:"1m" help:"Minimum detection span"`
