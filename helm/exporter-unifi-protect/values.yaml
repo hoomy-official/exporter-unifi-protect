@@ -1,3 +1,16 @@
+debug: false
+
+unifi:
+  host: ""
+  password:
+    secretName: ""
+    secretKey: ""
+    raw: ""
+  username:
+    secretName: ""
+    secretKey: ""
+    raw: ""
+
 # Default values for exporter-unifi-protect.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
@@ -41,7 +54,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 9090
 
 ingress:
   enabled: false
@@ -96,3 +109,80 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+metrics:
+  # -- enable the Prometheus
+  enabled: false
+  prometheusRule:
+    # -- Create a PrometheusRule for Prometheus Operator
+    enabled: false
+    # -- Additional labels that can be used so PrometheusRule will be discovered by Prometheus
+    additionalLabels: {}
+    # -- Namespace for the PrometheusRule Resource (defaults to the Release Namespace)
+    namespace: ""
+    # -- PrometheusRule definitions
+    rules: []
+      # - alert: PrometheusConfigReloadFailed
+      #   annotations:
+      #     description: Reloading Prometheus' configuration has failed for {{`{{`}}$labels.namespace{{`}}`}}/{{`{{`}}$labels.pod{{`}}`}}
+      #     summary: Reloading Prometheus' configuration failed
+      #   expr: prometheus_config_last_reload_successful{job="{{ $prometheusJob }}",namespace="{{ $namespace }}"} == 0
+      #   for: 10m
+      #   labels:
+    #     severity: warning
+  service:
+    # -- Annotations for Prometheus to auto-discover the metrics endpoint
+    # @default -- see [values.yaml](./values.yaml)
+    annotations:
+      prometheus.io/scrape: "true"
+      prometheus.io/port: "{{ .Values.metrics.service.port }}"
+    # -- Prometheus Exporter service port
+    port: 9090
+    # -- Control where client requests go, to the same pod or round-robin. Values: ClientIP or None
+    sessionAffinity: None
+  serviceMonitor:
+    # -- Create ServiceMonitor Resource for scraping metrics using Prometheus Operator
+    enabled: true
+    # -- Additional labels that can be used so ServiceMonitor will be discovered by Prometheus
+    additionalLabels: {}
+    # -- Specify honorLabels parameter to add the scrape endpoint
+    honorLabels: false
+    # -- Interval at which metrics should be scraped.
+    interval: "30s"
+    # -- The name of the label on the target service to use as the job name in Prometheus
+    jobLabel: ""
+    # -- MetricRelabelConfigs to apply to samples before ingestion
+    metricRelabelings: {}
+    # -- Namespace for the ServiceMonitor Resource (defaults to the Release Namespace)
+    namespace: ""
+    # -- The path used by Prometheus to scrape metrics
+    path: "/metrics"
+    # -- RelabelConfigs to apply to samples before scraping
+    relabelings: {}
+    # -- Timeout after which the scrape is ended
+    scrapeTimeout: ""
+    # -- Prometheus instance selector labels
+    selector: {}
+  podMonitor:
+    # -- Create PodMonitor Resource for scraping metrics using Prometheus Operator
+    enabled: false
+    # -- Additional labels that can be used so ServiceMonitor will be discovered by Prometheus
+    additionalLabels: {}
+    # -- Specify honorLabels parameter to add the scrape endpoint
+    honorLabels: false
+    # -- Interval at which metrics should be scraped.
+    interval: "30s"
+    # -- The name of the label on the target service to use as the job name in Prometheus
+    jobLabel: ""
+    # -- MetricRelabelConfigs to apply to samples before ingestion
+    metricRelabelings: {}
+    # -- Namespace for the ServiceMonitor Resource (defaults to the Release Namespace)
+    namespace: ""
+    # -- The path used by Prometheus to scrape metrics
+    path: "/metrics"
+    # -- RelabelConfigs to apply to samples before scraping
+    relabelings: {}
+    # -- Timeout after which the scrape is ended
+    scrapeTimeout: ""
+    # -- Prometheus instance selector labels
+    selector: {}

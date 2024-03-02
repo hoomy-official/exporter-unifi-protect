@@ -37,26 +37,50 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: HOST
-              value: xxx
-            - name: PASSWORD
-              value: yyy
-            - name: USERNAME
-              value: eeee
+            {{- if .Values.unifi.host.secretName }}
+            - name: UNIFI_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.unifi.host.secretName | quote }}
+                  key: {{ .Values.unifi.host.secretKey | default "host" | quote }}
+            {{- else if .Values.unifi.host.raw}}
+            - name: UNIFI_HOST
+              value: {{ .Values.unifi.host.raw | quote }}
+            {{- end }}
+            {{- if .Values.unifi.password.secretName }}
+            - name: UNIFI_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.unifi.password.secretName | quote }}
+                  key: {{ .Values.unifi.password.secretKey | default "password" | quote }}
+            {{- else if .Values.unifi.password.raw}}
+            - name: UNIFI_PASSWORD
+              value: {{ .Values.unifi.password.raw | quote }}
+            {{- end }}
+            {{- if .Values.unifi.username.secretName }}
+            - name: UNIFI_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.unifi.username.secretName | quote }}
+                  key: {{ .Values.unifi.username.secretKey | default "username" | quote }}
+            {{- else if .Values.unifi.username.raw}}
+            - name: UNIFI_USERNAME
+              value: {{ .Values.unifi.username.raw }}
+            {{- end }}
             - name: DEBUG
-              value: "true"
+              value: {{ .Values.debug | quote }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /
-              port: http
+              path: /-/healthy
+              port: {{ .Values.service.port }}
           readinessProbe:
             httpGet:
-              path: /
-              port: http
+              path: /-/healthy
+              port: {{ .Values.service.port }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           {{- with .Values.volumeMounts }}

@@ -1,0 +1,21 @@
+{{- if .Values.metrics.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  {{- if .Values.metrics.service.annotations }}
+  annotations:
+    {{- tpl (toYaml .Values.metrics.service.annotations) . | nindent 4 }}
+  {{- end }}
+  name: {{ include "exporter-unifi-protect.fullname" . }}-metrics
+  labels:
+    {{- include "exporter-unifi-protect.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: {{ .Values.metrics.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http-metrics
+  selector:
+    {{- include "exporter-unifi-protect.selectorLabels" . | nindent 4 }}
+{{- end }}
