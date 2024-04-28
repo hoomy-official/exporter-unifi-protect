@@ -1,0 +1,13 @@
+apiVersion: 1
+
+providers:
+
+- name: unifi-protect
+  orgId: 1
+  folder: ''
+  type: file
+  disableDeletion: false
+  allowUiUpdates: true
+  options:
+    path: /var/lib/grafana/dashboards/unifi-protect
+    foldersFromFilesStructure: true
