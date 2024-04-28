@@ -1,2070 +1,2070 @@
 {
-    "__inputs": [
-      {
-        "name": "DS_MIMIR",
-        "label": "Mimir",
-        "description": "",
-        "type": "datasource",
-        "pluginId": "prometheus",
-        "pluginName": "Prometheus"
-      }
-    ],
-    "__elements": {},
-    "__requires": [
-      {
-        "type": "panel",
-        "id": "gauge",
-        "name": "Gauge",
-        "version": ""
-      },
-      {
-        "type": "grafana",
-        "id": "grafana",
-        "name": "Grafana",
-        "version": "10.4.1"
-      },
-      {
-        "type": "datasource",
-        "id": "prometheus",
-        "name": "Prometheus",
-        "version": "1.0.0"
-      },
-      {
-        "type": "panel",
-        "id": "stat",
-        "name": "Stat",
-        "version": ""
-      },
-      {
-        "type": "panel",
-        "id": "state-timeline",
-        "name": "State timeline",
-        "version": ""
-      },
-      {
-        "type": "panel",
-        "id": "timeseries",
-        "name": "Time series",
-        "version": ""
-      }
-    ],
-    "annotations": {
-      "list": [
-        {
-          "builtIn": 1,
-          "datasource": {
-            "type": "grafana",
-            "uid": "-- Grafana --"
-          },
-          "enable": true,
-          "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
-          "type": "dashboard"
-        }
-      ]
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "Prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "gauge",
+      "name": "Gauge",
+      "version": ""
     },
-    "description": "exporter-unifi-protect Dashboard - https://github.com/hoomy-official/exporter-unifi-protect",
-    "editable": true,
-    "fiscalYearStartMonth": 0,
-    "graphTooltip": 0,
-    "id": null,
-    "links": [],
-    "panels": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "10.4.2"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "state-timeline",
+      "name": "State timeline",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
       {
-        "collapsed": false,
-        "gridPos": {
-          "h": 1,
-          "w": 24,
-          "x": 0,
-          "y": 0
-        },
-        "id": 9,
-        "panels": [],
-        "title": "Environment",
-        "type": "row"
-      },
-      {
+        "builtIn": 1,
         "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_MIMIR}"
+          "type": "grafana",
+          "uid": "-- Grafana --"
         },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [],
-            "max": 90,
-            "min": 40,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "blue",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 50
-                },
-                {
-                  "color": "orange",
-                  "value": 60
-                },
-                {
-                  "color": "green",
-                  "value": 65
-                },
-                {
-                  "color": "orange",
-                  "value": 75
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "fahrenheit"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 6,
-          "x": 0,
-          "y": 1
-        },
-        "id": 6,
-        "options": {
-          "minVizHeight": 75,
-          "minVizWidth": 75,
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showThresholdLabels": false,
-          "showThresholdMarkers": true,
-          "sizing": "auto"
-        },
-        "pluginVersion": "10.4.1",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_MIMIR}"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "(sensor_temperature_celsius{job=\"$job\", name=~\"$instance\"} * 1.8 )+ 32",
-            "instant": false,
-            "legendFormat": "{{name}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Sensor Temperature",
-        "type": "gauge"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_MIMIR}"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "linear",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "fahrenheit"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 18,
-          "x": 6,
-          "y": 1
-        },
-        "id": 2,
-        "options": {
-          "legend": {
-            "calcs": [
-              "min",
-              "mean",
-              "max",
-              "lastNotNull"
-            ],
-            "displayMode": "table",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "tooltip": {
-            "mode": "single",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "10.4.1",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_MIMIR}"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "(sensor_temperature_celsius{job=\"$job\", name=~\"$instance\"} * 1.8 )+ 32",
-            "instant": false,
-            "legendFormat": "Temperature - {{name}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Sensor Temperature",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_MIMIR}"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "red",
-                  "value": null
-                },
-                {
-                  "color": "orange",
-                  "value": 30
-                },
-                {
-                  "color": "green",
-                  "value": 50
-                },
-                {
-                  "color": "#EAB839",
-                  "value": 60
-                },
-                {
-                  "color": "red",
-                  "value": 70
-                }
-              ]
-            },
-            "unit": "percent"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 6,
-          "x": 0,
-          "y": 10
-        },
-        "id": 4,
-        "options": {
-          "minVizHeight": 75,
-          "minVizWidth": 75,
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showThresholdLabels": false,
-          "showThresholdMarkers": true,
-          "sizing": "auto"
-        },
-        "pluginVersion": "10.4.1",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_MIMIR}"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "sensor_humidity_percentage{job=\"$job\", name=~\"$instance\"}",
-            "instant": false,
-            "legendFormat": "{{name}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Sensor Humidity",
-        "type": "gauge"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_MIMIR}"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "linear",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "percent"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 18,
-          "x": 6,
-          "y": 10
-        },
-        "id": 3,
-        "options": {
-          "legend": {
-            "calcs": [
-              "min",
-              "mean",
-              "max",
-              "lastNotNull"
-            ],
-            "displayMode": "table",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "tooltip": {
-            "mode": "single",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "10.4.1",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_MIMIR}"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "sensor_humidity_percentage",
-            "instant": false,
-            "legendFormat": "Humidity - {{name}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Sensor Humidity",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_MIMIR}"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 6,
-          "x": 0,
-          "y": 19
-        },
-        "id": 5,
-        "options": {
-          "minVizHeight": 75,
-          "minVizWidth": 75,
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showThresholdLabels": false,
-          "showThresholdMarkers": true,
-          "sizing": "auto"
-        },
-        "pluginVersion": "10.4.1",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_MIMIR}"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "sensor_light_lux{job=\"$job\", name=~\"$instance\"}",
-            "instant": false,
-            "legendFormat": "Lux - {{name}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Sensor Light ",
-        "type": "gauge"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_MIMIR}"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisBorderShow": false,
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineInterpolation": "linear",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 18,
-          "x": 6,
-          "y": 19
-        },
-        "id": 1,
-        "options": {
-          "legend": {
-            "calcs": [
-              "min",
-              "mean",
-              "max",
-              "firstNotNull"
-            ],
-            "displayMode": "table",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "tooltip": {
-            "mode": "single",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "10.4.1",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_MIMIR}"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "sensor_light_lux{job=\"$job\", name=~\"$instance\"}",
-            "instant": false,
-            "legendFormat": "Lux - {{name}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Sensor Light ",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_MIMIR}"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "custom": {
-              "fillOpacity": 70,
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "insertNulls": false,
-              "lineWidth": 0,
-              "spanNulls": false
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 1
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 24,
-          "x": 0,
-          "y": 28
-        },
-        "id": 7,
-        "options": {
-          "alignValue": "left",
-          "legend": {
-            "displayMode": "list",
-            "placement": "bottom",
-            "showLegend": true
-          },
-          "mergeValues": true,
-          "rowHeight": 0.9,
-          "showValue": "auto",
-          "tooltip": {
-            "mode": "single",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "10.4.1",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_MIMIR}"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "sensor_is_motion_detected",
-            "instant": false,
-            "legendFormat": "Motion - {{detected_period}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Sensor Motion",
-        "type": "state-timeline"
-      },
-      {
-        "collapsed": true,
-        "gridPos": {
-          "h": 1,
-          "w": 24,
-          "x": 0,
-          "y": 37
-        },
-        "id": 8,
-        "panels": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_MIMIR}"
-            },
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "thresholds"
-                },
-                "custom": {
-                  "fillOpacity": 70,
-                  "hideFrom": {
-                    "legend": false,
-                    "tooltip": false,
-                    "viz": false
-                  },
-                  "insertNulls": false,
-                  "lineWidth": 0,
-                  "spanNulls": false
-                },
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green"
-                    },
-                    {
-                      "color": "red",
-                      "value": 1
-                    }
-                  ]
-                }
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 7,
-              "w": 24,
-              "x": 0,
-              "y": 38
-            },
-            "id": 10,
-            "options": {
-              "alignValue": "left",
-              "legend": {
-                "displayMode": "list",
-                "placement": "bottom",
-                "showLegend": true
-              },
-              "mergeValues": true,
-              "rowHeight": 0.9,
-              "showValue": "auto",
-              "tooltip": {
-                "mode": "single",
-                "sort": "none"
-              }
-            },
-            "pluginVersion": "10.4.1",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_is_opened",
-                "instant": false,
-                "legendFormat": "Opened- {{detected_period}}",
-                "range": true,
-                "refId": "A"
-              }
-            ],
-            "title": "Sensor Opened",
-            "type": "state-timeline"
-          }
-        ],
-        "title": "Extra Features - Door/Window Sensor",
-        "type": "row"
-      },
-      {
-        "collapsed": true,
-        "gridPos": {
-          "h": 1,
-          "w": 24,
-          "x": 0,
-          "y": 38
-        },
-        "id": 11,
-        "panels": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_MIMIR}"
-            },
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "palette-classic"
-                },
-                "custom": {
-                  "axisBorderShow": false,
-                  "axisCenteredZero": false,
-                  "axisColorMode": "text",
-                  "axisLabel": "",
-                  "axisPlacement": "auto",
-                  "barAlignment": 0,
-                  "drawStyle": "line",
-                  "fillOpacity": 0,
-                  "gradientMode": "none",
-                  "hideFrom": {
-                    "legend": false,
-                    "tooltip": false,
-                    "viz": false
-                  },
-                  "insertNulls": false,
-                  "lineInterpolation": "linear",
-                  "lineWidth": 1,
-                  "pointSize": 5,
-                  "scaleDistribution": {
-                    "type": "linear"
-                  },
-                  "showPoints": "auto",
-                  "spanNulls": false,
-                  "stacking": {
-                    "group": "A",
-                    "mode": "none"
-                  },
-                  "thresholdsStyle": {
-                    "mode": "off"
-                  }
-                },
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "red"
-                    },
-                    {
-                      "color": "red",
-                      "value": 30
-                    },
-                    {
-                      "color": "orange",
-                      "value": 40
-                    },
-                    {
-                      "color": "yellow",
-                      "value": 50
-                    }
-                  ]
-                },
-                "unit": "percent"
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 9,
-              "w": 8,
-              "x": 0,
-              "y": 39
-            },
-            "id": 12,
-            "options": {
-              "legend": {
-                "calcs": [
-                  "lastNotNull"
-                ],
-                "displayMode": "table",
-                "placement": "bottom",
-                "showLegend": true
-              },
-              "tooltip": {
-                "mode": "single",
-                "sort": "none"
-              }
-            },
-            "pluginVersion": "10.4.1",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_battery_status_percentage{job=\"$job\", name=~\"$instance\"}",
-                "instant": false,
-                "legendFormat": "{{name}} - Battery",
-                "range": true,
-                "refId": "A"
-              }
-            ],
-            "title": "Sensor Battery",
-            "type": "timeseries"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_MIMIR}"
-            },
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "palette-classic"
-                },
-                "custom": {
-                  "axisBorderShow": false,
-                  "axisCenteredZero": false,
-                  "axisColorMode": "text",
-                  "axisLabel": "",
-                  "axisPlacement": "auto",
-                  "barAlignment": 0,
-                  "drawStyle": "line",
-                  "fillOpacity": 0,
-                  "gradientMode": "none",
-                  "hideFrom": {
-                    "legend": false,
-                    "tooltip": false,
-                    "viz": false
-                  },
-                  "insertNulls": false,
-                  "lineInterpolation": "linear",
-                  "lineWidth": 1,
-                  "pointSize": 5,
-                  "scaleDistribution": {
-                    "type": "linear"
-                  },
-                  "showPoints": "auto",
-                  "spanNulls": false,
-                  "stacking": {
-                    "group": "A",
-                    "mode": "none"
-                  },
-                  "thresholdsStyle": {
-                    "mode": "off"
-                  }
-                },
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "red"
-                    },
-                    {
-                      "color": "red",
-                      "value": 30
-                    },
-                    {
-                      "color": "orange",
-                      "value": 40
-                    },
-                    {
-                      "color": "yellow",
-                      "value": 50
-                    }
-                  ]
-                },
-                "unit": "percent"
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 9,
-              "w": 8,
-              "x": 8,
-              "y": 39
-            },
-            "id": 13,
-            "options": {
-              "legend": {
-                "calcs": [
-                  "min",
-                  "mean",
-                  "max",
-                  "lastNotNull"
-                ],
-                "displayMode": "table",
-                "placement": "bottom",
-                "showLegend": true
-              },
-              "tooltip": {
-                "mode": "single",
-                "sort": "none"
-              }
-            },
-            "pluginVersion": "10.4.1",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_bluetooth_signal_quality{job=\"$job\", name=~\"$instance\"}",
-                "instant": false,
-                "legendFormat": "{{name}} - Signal Quality",
-                "range": true,
-                "refId": "A"
-              }
-            ],
-            "title": "Sensor Bluetooth Signal Quality",
-            "type": "timeseries"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_MIMIR}"
-            },
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "palette-classic"
-                },
-                "custom": {
-                  "axisBorderShow": false,
-                  "axisCenteredZero": false,
-                  "axisColorMode": "text",
-                  "axisLabel": "",
-                  "axisPlacement": "auto",
-                  "barAlignment": 0,
-                  "drawStyle": "line",
-                  "fillOpacity": 0,
-                  "gradientMode": "none",
-                  "hideFrom": {
-                    "legend": false,
-                    "tooltip": false,
-                    "viz": false
-                  },
-                  "insertNulls": false,
-                  "lineInterpolation": "linear",
-                  "lineWidth": 1,
-                  "pointSize": 5,
-                  "scaleDistribution": {
-                    "type": "linear"
-                  },
-                  "showPoints": "auto",
-                  "spanNulls": false,
-                  "stacking": {
-                    "group": "A",
-                    "mode": "none"
-                  },
-                  "thresholdsStyle": {
-                    "mode": "off"
-                  }
-                },
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "red"
-                    },
-                    {
-                      "color": "red",
-                      "value": 30
-                    },
-                    {
-                      "color": "orange",
-                      "value": 40
-                    },
-                    {
-                      "color": "yellow",
-                      "value": 50
-                    }
-                  ]
-                },
-                "unit": "RSSI"
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 9,
-              "w": 8,
-              "x": 16,
-              "y": 39
-            },
-            "id": 14,
-            "options": {
-              "legend": {
-                "calcs": [
-                  "min",
-                  "mean",
-                  "max",
-                  "lastNotNull"
-                ],
-                "displayMode": "table",
-                "placement": "bottom",
-                "showLegend": true
-              },
-              "tooltip": {
-                "mode": "single",
-                "sort": "none"
-              }
-            },
-            "pluginVersion": "10.4.1",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_bluetooth_signal_strength{job=\"$job\", name=~\"$instance\"}",
-                "instant": false,
-                "legendFormat": "{{name}} - Signal Stength",
-                "range": true,
-                "refId": "A"
-              }
-            ],
-            "title": "Sensor Bluetooth  Signal Stength",
-            "type": "timeseries"
-          }
-        ],
-        "title": "Sensor Information",
-        "type": "row"
-      },
-      {
-        "collapsed": true,
-        "gridPos": {
-          "h": 1,
-          "w": 24,
-          "x": 0,
-          "y": 39
-        },
-        "id": 16,
-        "panels": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_MIMIR}"
-            },
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "thresholds"
-                },
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "red"
-                    },
-                    {
-                      "color": "red",
-                      "value": 30
-                    },
-                    {
-                      "color": "orange",
-                      "value": 40
-                    },
-                    {
-                      "color": "yellow",
-                      "value": 50
-                    }
-                  ]
-                },
-                "unit": "percent"
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 4,
-              "w": 3,
-              "x": 0,
-              "y": 40
-            },
-            "id": 19,
-            "options": {
-              "colorMode": "value",
-              "graphMode": "area",
-              "justifyMode": "auto",
-              "orientation": "auto",
-              "reduceOptions": {
-                "calcs": [
-                  "lastNotNull"
-                ],
-                "fields": "",
-                "values": false
-              },
-              "showPercentChange": false,
-              "textMode": "auto",
-              "wideLayout": true
-            },
-            "pluginVersion": "10.4.1",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_battery_status_percentage{job=\"$job\", name=~\"$instance\"}",
-                "instant": false,
-                "legendFormat": "{{name}} - Battery",
-                "range": true,
-                "refId": "A"
-              }
-            ],
-            "title": "Sensor Battery",
-            "type": "stat"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_MIMIR}"
-            },
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "thresholds"
-                },
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "red"
-                    },
-                    {
-                      "color": "red",
-                      "value": 30
-                    },
-                    {
-                      "color": "orange",
-                      "value": 40
-                    },
-                    {
-                      "color": "yellow",
-                      "value": 50
-                    }
-                  ]
-                },
-                "unit": "percent"
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 4,
-              "w": 4,
-              "x": 3,
-              "y": 40
-            },
-            "id": 20,
-            "options": {
-              "colorMode": "value",
-              "graphMode": "area",
-              "justifyMode": "auto",
-              "orientation": "auto",
-              "reduceOptions": {
-                "calcs": [
-                  "lastNotNull"
-                ],
-                "fields": "",
-                "values": false
-              },
-              "showPercentChange": false,
-              "textMode": "auto",
-              "wideLayout": true
-            },
-            "pluginVersion": "10.4.1",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_bluetooth_signal_quality{job=\"$job\", name=~\"$instance\"}",
-                "instant": false,
-                "legendFormat": "{{name}} - Signal Quality",
-                "range": true,
-                "refId": "A"
-              }
-            ],
-            "title": "Sensor Bluetooth Signal Quality",
-            "type": "stat"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_MIMIR}"
-            },
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "thresholds"
-                },
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "red"
-                    },
-                    {
-                      "color": "yellow",
-                      "value": -60
-                    },
-                    {
-                      "color": "orange",
-                      "value": -40
-                    },
-                    {
-                      "color": "green",
-                      "value": -30
-                    }
-                  ]
-                },
-                "unit": "RSSI"
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 4,
-              "w": 4,
-              "x": 7,
-              "y": 40
-            },
-            "id": 21,
-            "options": {
-              "colorMode": "value",
-              "graphMode": "area",
-              "justifyMode": "auto",
-              "orientation": "auto",
-              "reduceOptions": {
-                "calcs": [
-                  "lastNotNull"
-                ],
-                "fields": "",
-                "values": false
-              },
-              "showPercentChange": false,
-              "textMode": "auto",
-              "wideLayout": true
-            },
-            "pluginVersion": "10.4.1",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_bluetooth_signal_strength{job=\"$job\", name=~\"$instance\"}",
-                "instant": false,
-                "legendFormat": "{{name}} - Signal Stength",
-                "range": true,
-                "refId": "A"
-              }
-            ],
-            "title": "Sensor Bluetooth  Signal Stength",
-            "type": "stat"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_MIMIR}"
-            },
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "thresholds"
-                },
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green"
-                    }
-                  ]
-                },
-                "unit": "dateTimeAsIso"
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 4,
-              "w": 3,
-              "x": 11,
-              "y": 40
-            },
-            "id": 22,
-            "options": {
-              "colorMode": "value",
-              "graphMode": "none",
-              "justifyMode": "auto",
-              "orientation": "auto",
-              "reduceOptions": {
-                "calcs": [
-                  "lastNotNull"
-                ],
-                "fields": "",
-                "values": false
-              },
-              "showPercentChange": false,
-              "textMode": "auto",
-              "wideLayout": true
-            },
-            "pluginVersion": "10.4.1",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_up_since_gauge{job=\"$job\", name=~\"$instance\"}",
-                "instant": false,
-                "legendFormat": "{{name}}",
-                "range": true,
-                "refId": "A"
-              }
-            ],
-            "title": "Sensor Up Since ",
-            "type": "stat"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_MIMIR}"
-            },
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "thresholds"
-                },
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "blue"
-                    }
-                  ]
-                },
-                "unit": "dateTimeAsIso"
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 4,
-              "w": 3,
-              "x": 14,
-              "y": 40
-            },
-            "id": 23,
-            "options": {
-              "colorMode": "value",
-              "graphMode": "none",
-              "justifyMode": "auto",
-              "orientation": "auto",
-              "reduceOptions": {
-                "calcs": [
-                  "lastNotNull"
-                ],
-                "fields": "",
-                "values": false
-              },
-              "showPercentChange": false,
-              "textMode": "auto",
-              "wideLayout": true
-            },
-            "pluginVersion": "10.4.1",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_connected_since_gauge{job=\"$job\", name=~\"$instance\"}",
-                "instant": false,
-                "legendFormat": "{{name}}",
-                "range": true,
-                "refId": "A"
-              }
-            ],
-            "title": "Sensor Connected Since ",
-            "type": "stat"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_MIMIR}"
-            },
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "thresholds"
-                },
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "text"
-                    }
-                  ]
-                },
-                "unit": "dateTimeAsIso"
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 4,
-              "w": 3,
-              "x": 17,
-              "y": 40
-            },
-            "id": 24,
-            "options": {
-              "colorMode": "value",
-              "graphMode": "none",
-              "justifyMode": "auto",
-              "orientation": "auto",
-              "reduceOptions": {
-                "calcs": [
-                  "lastNotNull"
-                ],
-                "fields": "",
-                "values": false
-              },
-              "showPercentChange": false,
-              "textMode": "auto",
-              "wideLayout": true
-            },
-            "pluginVersion": "10.4.1",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_last_seen_gauge{job=\"$job\", name=~\"$instance\"}",
-                "instant": false,
-                "legendFormat": "{{name}}",
-                "range": true,
-                "refId": "A"
-              }
-            ],
-            "title": "Sensor Last Seen",
-            "type": "stat"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_MIMIR}"
-            },
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "thresholds"
-                },
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green"
-                    }
-                  ]
-                },
-                "unit": "none"
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 4,
-              "w": 2,
-              "x": 20,
-              "y": 40
-            },
-            "id": 33,
-            "options": {
-              "colorMode": "value",
-              "graphMode": "none",
-              "justifyMode": "auto",
-              "orientation": "auto",
-              "reduceOptions": {
-                "calcs": [
-                  "lastNotNull"
-                ],
-                "fields": "",
-                "values": false
-              },
-              "showPercentChange": false,
-              "textMode": "name",
-              "wideLayout": true
-            },
-            "pluginVersion": "10.4.1",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_info{job=\"$job\", name=~\"$instance\"}",
-                "instant": false,
-                "legendFormat": "{{firmwareVersion}} ",
-                "range": true,
-                "refId": "A"
-              }
-            ],
-            "title": "Firmware Version",
-            "type": "stat"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_MIMIR}"
-            },
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "thresholds"
-                },
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green"
-                    }
-                  ]
-                },
-                "unit": "none"
-              },
-              "overrides": []
-            },
-            "gridPos": {
-              "h": 4,
-              "w": 2,
-              "x": 22,
-              "y": 40
-            },
-            "id": 34,
-            "options": {
-              "colorMode": "value",
-              "graphMode": "none",
-              "justifyMode": "auto",
-              "orientation": "auto",
-              "reduceOptions": {
-                "calcs": [
-                  "lastNotNull"
-                ],
-                "fields": "",
-                "values": false
-              },
-              "showPercentChange": false,
-              "textMode": "name",
-              "wideLayout": true
-            },
-            "pluginVersion": "10.4.1",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_info{job=\"$job\", name=~\"$instance\"}",
-                "hide": false,
-                "instant": false,
-                "legendFormat": "{{hardwareRevision}}",
-                "range": true,
-                "refId": "B"
-              }
-            ],
-            "title": "Hardware Version",
-            "type": "stat"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_MIMIR}"
-            },
-            "fieldConfig": {
-              "defaults": {
-                "color": {
-                  "mode": "thresholds"
-                },
-                "mappings": [],
-                "thresholds": {
-                  "mode": "absolute",
-                  "steps": [
-                    {
-                      "color": "green"
-                    },
-                    {
-                      "color": "red",
-                      "value": 1
-                    }
-                  ]
-                },
-                "unit": "none"
-              },
-              "overrides": [
-                {
-                  "matcher": {
-                    "id": "byName",
-                    "options": "Adopted"
-                  },
-                  "properties": [
-                    {
-                      "id": "thresholds",
-                      "value": {
-                        "mode": "absolute",
-                        "steps": [
-                          {
-                            "color": "red"
-                          },
-                          {
-                            "color": "green",
-                            "value": 1
-                          }
-                        ]
-                      }
-                    }
-                  ]
-                },
-                {
-                  "matcher": {
-                    "id": "byName",
-                    "options": "Connected"
-                  },
-                  "properties": [
-                    {
-                      "id": "thresholds",
-                      "value": {
-                        "mode": "absolute",
-                        "steps": [
-                          {
-                            "color": "red"
-                          },
-                          {
-                            "color": "green",
-                            "value": 1
-                          }
-                        ]
-                      }
-                    }
-                  ]
-                }
-              ]
-            },
-            "gridPos": {
-              "h": 6,
-              "w": 24,
-              "x": 0,
-              "y": 44
-            },
-            "id": 15,
-            "options": {
-              "minVizHeight": 75,
-              "minVizWidth": 75,
-              "orientation": "auto",
-              "reduceOptions": {
-                "calcs": [
-                  "lastNotNull"
-                ],
-                "fields": "",
-                "values": false
-              },
-              "showThresholdLabels": false,
-              "showThresholdMarkers": true,
-              "sizing": "auto"
-            },
-            "pluginVersion": "10.4.1",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_is_provisioned{job=\"$job\", name=~\"$instance\"}",
-                "instant": true,
-                "legendFormat": "Provisioned",
-                "range": false,
-                "refId": "A"
-              },
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_is_adopted{job=\"$job\", name=~\"$instance\"}",
-                "hide": false,
-                "instant": true,
-                "legendFormat": "Adopted",
-                "range": false,
-                "refId": "B"
-              },
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_is_adopted_by_other{job=\"$job\", name=~\"$instance\"}",
-                "hide": false,
-                "instant": true,
-                "legendFormat": "Adopted by Other",
-                "range": false,
-                "refId": "C"
-              },
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_is_adopting{job=\"$job\", name=~\"$instance\"}",
-                "hide": false,
-                "instant": true,
-                "legendFormat": "Adopting",
-                "range": false,
-                "refId": "D"
-              },
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_is_attempting_to_connect{job=\"$job\", name=~\"$instance\"}",
-                "hide": false,
-                "instant": true,
-                "legendFormat": "Attempting to Connect",
-                "range": false,
-                "refId": "E"
-              },
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_is_connected{job=\"$job\", name=~\"$instance\"}",
-                "hide": false,
-                "instant": true,
-                "legendFormat": "Connected",
-                "range": false,
-                "refId": "F"
-              },
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_is_downloading_f_w{job=\"$job\", name=~\"$instance\"}",
-                "hide": false,
-                "instant": true,
-                "legendFormat": "Downloading Firmware",
-                "range": false,
-                "refId": "H"
-              },
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_is_rebooting{job=\"$job\", name=~\"$instance\"}",
-                "hide": false,
-                "instant": true,
-                "legendFormat": "Rebooting",
-                "range": false,
-                "refId": "I"
-              },
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_is_restoring{job=\"$job\", name=~\"$instance\"}",
-                "hide": false,
-                "instant": true,
-                "legendFormat": "Restoring",
-                "range": false,
-                "refId": "J"
-              },
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_is_ssh_enabled{job=\"$job\", name=~\"$instance\"}",
-                "hide": false,
-                "instant": true,
-                "legendFormat": "SSH Enabled",
-                "range": false,
-                "refId": "K"
-              },
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_is_updating{job=\"$job\", name=~\"$instance\"}",
-                "hide": false,
-                "instant": true,
-                "legendFormat": "Updating",
-                "range": false,
-                "refId": "L"
-              },
-              {
-                "datasource": {
-                  "type": "prometheus",
-                  "uid": "${DS_MIMIR}"
-                },
-                "editorMode": "code",
-                "exemplar": false,
-                "expr": "sensor_can_adopt{job=\"$job\", name=~\"$instance\"}",
-                "hide": false,
-                "instant": true,
-                "legendFormat": "Can Adopt",
-                "range": false,
-                "refId": "G"
-              }
-            ],
-            "title": "Sensor Status",
-            "type": "gauge"
-          }
-        ],
-        "repeat": "instance",
-        "repeatDirection": "h",
-        "title": "Sensor Status - $instance",
-        "type": "row"
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
       }
-    ],
-    "refresh": "",
-    "schemaVersion": 39,
-    "tags": [],
-    "templating": {
-      "list": [
-        {
-          "current": {
-            "selected": false,
-            "text": "default",
-            "value": "default"
+    ]
+  },
+  "description": "exporter-unifi-protect Dashboard - https://github.com/hoomy-official/exporter-unifi-protect",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 9,
+      "panels": [],
+      "title": "Environment",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
           },
-          "hide": 0,
-          "includeAll": false,
-          "label": "Prometheus",
-          "multi": false,
-          "name": "datasource",
-          "options": [],
-          "query": "prometheus",
-          "queryValue": "",
-          "refresh": 1,
-          "regex": "",
-          "skipUrlSync": false,
-          "type": "datasource"
+          "mappings": [],
+          "max": 90,
+          "min": 40,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 50
+              },
+              {
+                "color": "orange",
+                "value": 60
+              },
+              {
+                "color": "green",
+                "value": 65
+              },
+              {
+                "color": "orange",
+                "value": 75
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "fahrenheit"
         },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 0,
+        "y": 1
+      },
+      "id": 6,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
         {
-          "current": {},
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_MIMIR}"
+            "uid": "${DS_PROMETHEUS}"
           },
-          "definition": "label_values(sensor_info,job)",
-          "hide": 0,
-          "includeAll": false,
-          "label": "Job",
-          "multi": false,
-          "name": "job",
-          "options": [],
-          "query": {
-            "qryType": 1,
-            "query": "label_values(sensor_info,job)",
-            "refId": "PrometheusVariableQueryEditor-VariableQuery"
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "(sensor_temperature_celsius{job=\"$job\", name=~\"$instance\"} * 1.8 )+ 32",
+          "instant": false,
+          "legendFormat": "{{name}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Sensor Temperature",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
           },
-          "refresh": 1,
-          "regex": "",
-          "skipUrlSync": false,
-          "sort": 0,
-          "type": "query"
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "fahrenheit"
         },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 18,
+        "x": 6,
+        "y": 1
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [
+            "min",
+            "mean",
+            "max",
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.1",
+      "targets": [
         {
-          "current": {},
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_MIMIR}"
+            "uid": "${DS_PROMETHEUS}"
           },
-          "definition": "label_values(sensor_info{job=\"$job\"},name)",
-          "hide": 0,
-          "includeAll": true,
-          "label": "Instances",
-          "multi": true,
-          "name": "instance",
-          "options": [],
-          "query": {
-            "qryType": 1,
-            "query": "label_values(sensor_info{job=\"$job\"},name)",
-            "refId": "PrometheusVariableQueryEditor-VariableQuery"
-          },
-          "refresh": 1,
-          "regex": "",
-          "skipUrlSync": false,
-          "sort": 0,
-          "type": "query"
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "(sensor_temperature_celsius{job=\"$job\", name=~\"$instance\"} * 1.8 )+ 32",
+          "instant": false,
+          "legendFormat": "Temperature - {{name}}",
+          "range": true,
+          "refId": "A"
         }
-      ]
+      ],
+      "title": "Sensor Temperature",
+      "type": "timeseries"
     },
-    "time": {
-      "from": "now-24h",
-      "to": "now"
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 30
+              },
+              {
+                "color": "green",
+                "value": 50
+              },
+              {
+                "color": "#EAB839",
+                "value": 60
+              },
+              {
+                "color": "red",
+                "value": 70
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 0,
+        "y": 10
+      },
+      "id": 4,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sensor_humidity_percentage{job=\"$job\", name=~\"$instance\"}",
+          "instant": false,
+          "legendFormat": "{{name}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Sensor Humidity",
+      "type": "gauge"
     },
-    "timepicker": {},
-    "timezone": "browser",
-    "title": "Unifi Protect - Sensors",
-    "uid": "edk4c0ult4tmoc",
-    "version": 21,
-    "weekStart": ""
-  }
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 18,
+        "x": 6,
+        "y": 10
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [
+            "min",
+            "mean",
+            "max",
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sensor_humidity_percentage",
+          "instant": false,
+          "legendFormat": "Humidity - {{name}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Sensor Humidity",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 0,
+        "y": 19
+      },
+      "id": 5,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sensor_light_lux{job=\"$job\", name=~\"$instance\"}",
+          "instant": false,
+          "legendFormat": "Lux - {{name}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Sensor Light ",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 18,
+        "x": 6,
+        "y": 19
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "calcs": [
+            "min",
+            "mean",
+            "max",
+            "firstNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sensor_light_lux{job=\"$job\", name=~\"$instance\"}",
+          "instant": false,
+          "legendFormat": "Lux - {{name}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Sensor Light ",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "fillOpacity": 70,
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineWidth": 0,
+            "spanNulls": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 28
+      },
+      "id": 7,
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "mergeValues": true,
+        "rowHeight": 0.9,
+        "showValue": "auto",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sensor_is_motion_detected",
+          "instant": false,
+          "legendFormat": "Motion - {{detected_period}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Sensor Motion",
+      "type": "state-timeline"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 37
+      },
+      "id": 8,
+      "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "fillOpacity": 70,
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineWidth": 0,
+                "spanNulls": false
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 1
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 24,
+            "x": 0,
+            "y": 38
+          },
+          "id": 10,
+          "options": {
+            "alignValue": "left",
+            "legend": {
+              "displayMode": "list",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "mergeValues": true,
+            "rowHeight": 0.9,
+            "showValue": "auto",
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "10.4.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_is_opened",
+              "instant": false,
+              "legendFormat": "Opened- {{detected_period}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Sensor Opened",
+          "type": "state-timeline"
+        }
+      ],
+      "title": "Extra Features - Door/Window Sensor",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 38
+      },
+      "id": 11,
+      "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red"
+                  },
+                  {
+                    "color": "red",
+                    "value": 30
+                  },
+                  {
+                    "color": "orange",
+                    "value": 40
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 50
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 8,
+            "x": 0,
+            "y": 39
+          },
+          "id": 12,
+          "options": {
+            "legend": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "10.4.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_battery_status_percentage{job=\"$job\", name=~\"$instance\"}",
+              "instant": false,
+              "legendFormat": "{{name}} - Battery",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Sensor Battery",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red"
+                  },
+                  {
+                    "color": "red",
+                    "value": 30
+                  },
+                  {
+                    "color": "orange",
+                    "value": 40
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 50
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 8,
+            "x": 8,
+            "y": 39
+          },
+          "id": 13,
+          "options": {
+            "legend": {
+              "calcs": [
+                "min",
+                "mean",
+                "max",
+                "lastNotNull"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "10.4.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_bluetooth_signal_quality{job=\"$job\", name=~\"$instance\"}",
+              "instant": false,
+              "legendFormat": "{{name}} - Signal Quality",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Sensor Bluetooth Signal Quality",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red"
+                  },
+                  {
+                    "color": "red",
+                    "value": 30
+                  },
+                  {
+                    "color": "orange",
+                    "value": 40
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 50
+                  }
+                ]
+              },
+              "unit": "RSSI"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 8,
+            "x": 16,
+            "y": 39
+          },
+          "id": 14,
+          "options": {
+            "legend": {
+              "calcs": [
+                "min",
+                "mean",
+                "max",
+                "lastNotNull"
+              ],
+              "displayMode": "table",
+              "placement": "bottom",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "pluginVersion": "10.4.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_bluetooth_signal_strength{job=\"$job\", name=~\"$instance\"}",
+              "instant": false,
+              "legendFormat": "{{name}} - Signal Stength",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Sensor Bluetooth  Signal Stength",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Sensor Information",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 39
+      },
+      "id": 16,
+      "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red"
+                  },
+                  {
+                    "color": "red",
+                    "value": 30
+                  },
+                  {
+                    "color": "orange",
+                    "value": 40
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 50
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 3,
+            "x": 0,
+            "y": 40
+          },
+          "id": 19,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "auto",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.4.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_battery_status_percentage{job=\"$job\", name=~\"$instance\"}",
+              "instant": false,
+              "legendFormat": "{{name}} - Battery",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Sensor Battery",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red"
+                  },
+                  {
+                    "color": "red",
+                    "value": 30
+                  },
+                  {
+                    "color": "orange",
+                    "value": 40
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 50
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 4,
+            "x": 3,
+            "y": 40
+          },
+          "id": 20,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "auto",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.4.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_bluetooth_signal_quality{job=\"$job\", name=~\"$instance\"}",
+              "instant": false,
+              "legendFormat": "{{name}} - Signal Quality",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Sensor Bluetooth Signal Quality",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "red"
+                  },
+                  {
+                    "color": "yellow",
+                    "value": -60
+                  },
+                  {
+                    "color": "orange",
+                    "value": -40
+                  },
+                  {
+                    "color": "green",
+                    "value": -30
+                  }
+                ]
+              },
+              "unit": "RSSI"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 4,
+            "x": 7,
+            "y": 40
+          },
+          "id": 21,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "auto",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.4.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_bluetooth_signal_strength{job=\"$job\", name=~\"$instance\"}",
+              "instant": false,
+              "legendFormat": "{{name}} - Signal Stength",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Sensor Bluetooth  Signal Stength",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  }
+                ]
+              },
+              "unit": "dateTimeAsIso"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 3,
+            "x": 11,
+            "y": 40
+          },
+          "id": 22,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "auto",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.4.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_up_since_gauge{job=\"$job\", name=~\"$instance\"}",
+              "instant": false,
+              "legendFormat": "{{name}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Sensor Up Since ",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "blue"
+                  }
+                ]
+              },
+              "unit": "dateTimeAsIso"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 3,
+            "x": 14,
+            "y": 40
+          },
+          "id": 23,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "auto",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.4.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_connected_since_gauge{job=\"$job\", name=~\"$instance\"}",
+              "instant": false,
+              "legendFormat": "{{name}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Sensor Connected Since ",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "text"
+                  }
+                ]
+              },
+              "unit": "dateTimeAsIso"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 3,
+            "x": 17,
+            "y": 40
+          },
+          "id": 24,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "auto",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.4.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_last_seen_gauge{job=\"$job\", name=~\"$instance\"}",
+              "instant": false,
+              "legendFormat": "{{name}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Sensor Last Seen",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 2,
+            "x": 20,
+            "y": 40
+          },
+          "id": 33,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "name",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.4.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_info{job=\"$job\", name=~\"$instance\"}",
+              "instant": false,
+              "legendFormat": "{{firmwareVersion}} ",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Firmware Version",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 2,
+            "x": 22,
+            "y": 40
+          },
+          "id": 34,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "name",
+            "wideLayout": true
+          },
+          "pluginVersion": "10.4.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_info{job=\"$job\", name=~\"$instance\"}",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "{{hardwareRevision}}",
+              "range": true,
+              "refId": "B"
+            }
+          ],
+          "title": "Hardware Version",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 1
+                  }
+                ]
+              },
+              "unit": "none"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Adopted"
+                },
+                "properties": [
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "red"
+                        },
+                        {
+                          "color": "green",
+                          "value": 1
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "Connected"
+                },
+                "properties": [
+                  {
+                    "id": "thresholds",
+                    "value": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "red"
+                        },
+                        {
+                          "color": "green",
+                          "value": 1
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 24,
+            "x": 0,
+            "y": 44
+          },
+          "id": 15,
+          "options": {
+            "minVizHeight": 75,
+            "minVizWidth": 75,
+            "orientation": "auto",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showThresholdLabels": false,
+            "showThresholdMarkers": true,
+            "sizing": "auto"
+          },
+          "pluginVersion": "10.4.1",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_is_provisioned{job=\"$job\", name=~\"$instance\"}",
+              "instant": true,
+              "legendFormat": "Provisioned",
+              "range": false,
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_is_adopted{job=\"$job\", name=~\"$instance\"}",
+              "hide": false,
+              "instant": true,
+              "legendFormat": "Adopted",
+              "range": false,
+              "refId": "B"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_is_adopted_by_other{job=\"$job\", name=~\"$instance\"}",
+              "hide": false,
+              "instant": true,
+              "legendFormat": "Adopted by Other",
+              "range": false,
+              "refId": "C"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_is_adopting{job=\"$job\", name=~\"$instance\"}",
+              "hide": false,
+              "instant": true,
+              "legendFormat": "Adopting",
+              "range": false,
+              "refId": "D"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_is_attempting_to_connect{job=\"$job\", name=~\"$instance\"}",
+              "hide": false,
+              "instant": true,
+              "legendFormat": "Attempting to Connect",
+              "range": false,
+              "refId": "E"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_is_connected{job=\"$job\", name=~\"$instance\"}",
+              "hide": false,
+              "instant": true,
+              "legendFormat": "Connected",
+              "range": false,
+              "refId": "F"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_is_downloading_f_w{job=\"$job\", name=~\"$instance\"}",
+              "hide": false,
+              "instant": true,
+              "legendFormat": "Downloading Firmware",
+              "range": false,
+              "refId": "H"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_is_rebooting{job=\"$job\", name=~\"$instance\"}",
+              "hide": false,
+              "instant": true,
+              "legendFormat": "Rebooting",
+              "range": false,
+              "refId": "I"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_is_restoring{job=\"$job\", name=~\"$instance\"}",
+              "hide": false,
+              "instant": true,
+              "legendFormat": "Restoring",
+              "range": false,
+              "refId": "J"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_is_ssh_enabled{job=\"$job\", name=~\"$instance\"}",
+              "hide": false,
+              "instant": true,
+              "legendFormat": "SSH Enabled",
+              "range": false,
+              "refId": "K"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_is_updating{job=\"$job\", name=~\"$instance\"}",
+              "hide": false,
+              "instant": true,
+              "legendFormat": "Updating",
+              "range": false,
+              "refId": "L"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "${DS_PROMETHEUS}"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "sensor_can_adopt{job=\"$job\", name=~\"$instance\"}",
+              "hide": false,
+              "instant": true,
+              "legendFormat": "Can Adopt",
+              "range": false,
+              "refId": "G"
+            }
+          ],
+          "title": "Sensor Status",
+          "type": "gauge"
+        }
+      ],
+      "repeat": "instance",
+      "repeatDirection": "h",
+      "title": "Sensor Status - $instance",
+      "type": "row"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": "default",
+          "value": "default"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Prometheus",
+        "multi": false,
+        "name": "DS_PROMETHEUS",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_PROMETHEUS}"
+        },
+        "definition": "label_values(sensor_info,job)",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Job",
+        "multi": false,
+        "name": "job",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(sensor_info,job)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_PROMETHEUS}"
+        },
+        "definition": "label_values(sensor_info{job=\"$job\"},name)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Instances",
+        "multi": true,
+        "name": "instance",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(sensor_info{job=\"$job\"},name)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Unifi Protect - Sensors",
+  "uid": "edk4c0ult4tmoc",
+  "version": 3,
+  "weekStart": ""
+}
