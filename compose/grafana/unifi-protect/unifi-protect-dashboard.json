@@ -2,7 +2,7 @@
   "__inputs": [
     {
       "name": "DS_PROMETHEUS",
-      "label": "Prometheus",
+      "label": "Mimir",
       "description": "",
       "type": "datasource",
       "pluginId": "prometheus",
@@ -21,7 +21,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "10.4.2"
+      "version": "10.4.1"
     },
     {
       "type": "datasource",
@@ -152,20 +152,24 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "10.4.2",
+      "pluginVersion": "10.4.1",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "editorMode": "code",
+          "disableTextWrap": false,
+          "editorMode": "builder",
           "exemplar": false,
-          "expr": "(sensor_temperature_celsius{job=\"$job\", name=~\"$instance\"} * 1.8 )+ 32",
+          "expr": "sum by(name) (sensor_temperature_celsius{job=\"$job\", name=~\"$instance\"}) * 1.8 + 32",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
           "instant": false,
           "legendFormat": "{{name}}",
           "range": true,
-          "refId": "A"
+          "refId": "A",
+          "useBackend": false
         }
       ],
       "title": "Sensor Temperature",
@@ -262,13 +266,17 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "editorMode": "code",
+          "disableTextWrap": false,
+          "editorMode": "builder",
           "exemplar": false,
-          "expr": "(sensor_temperature_celsius{job=\"$job\", name=~\"$instance\"} * 1.8 )+ 32",
+          "expr": "sum by(name) (sensor_temperature_celsius{job=\"$job\", name=~\"$instance\"}) * 1.8 + 32",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
           "instant": false,
           "legendFormat": "Temperature - {{name}}",
           "range": true,
-          "refId": "A"
+          "refId": "A",
+          "useBackend": false
         }
       ],
       "title": "Sensor Temperature",
@@ -336,20 +344,24 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "10.4.2",
+      "pluginVersion": "10.4.1",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "editorMode": "code",
+          "disableTextWrap": false,
+          "editorMode": "builder",
           "exemplar": false,
-          "expr": "sensor_humidity_percentage{job=\"$job\", name=~\"$instance\"}",
+          "expr": "sum by(name) (sensor_humidity_percentage{job=\"$job\", name=~\"$instance\"})",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
           "instant": false,
           "legendFormat": "{{name}}",
           "range": true,
-          "refId": "A"
+          "refId": "A",
+          "useBackend": false
         }
       ],
       "title": "Sensor Humidity",
@@ -446,13 +458,17 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "editorMode": "code",
+          "disableTextWrap": false,
+          "editorMode": "builder",
           "exemplar": false,
-          "expr": "sensor_humidity_percentage",
+          "expr": "sum by(name) (sensor_humidity_percentage{job=\"$job\", name=~\"$instance\"})",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
           "instant": false,
           "legendFormat": "Humidity - {{name}}",
           "range": true,
-          "refId": "A"
+          "refId": "A",
+          "useBackend": false
         }
       ],
       "title": "Sensor Humidity",
@@ -507,20 +523,24 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "10.4.2",
+      "pluginVersion": "10.4.1",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "editorMode": "code",
+          "disableTextWrap": false,
+          "editorMode": "builder",
           "exemplar": false,
-          "expr": "sensor_light_lux{job=\"$job\", name=~\"$instance\"}",
+          "expr": "sum by(name) (sensor_light_lux{job=\"$job\", name=~\"$instance\"})",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
           "instant": false,
           "legendFormat": "Lux - {{name}}",
           "range": true,
-          "refId": "A"
+          "refId": "A",
+          "useBackend": false
         }
       ],
       "title": "Sensor Light ",
@@ -616,13 +636,17 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "editorMode": "code",
+          "disableTextWrap": false,
+          "editorMode": "builder",
           "exemplar": false,
-          "expr": "sensor_light_lux{job=\"$job\", name=~\"$instance\"}",
+          "expr": "sum by(name) (sensor_light_lux{job=\"$job\", name=~\"$instance\"})",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
           "instant": false,
           "legendFormat": "Lux - {{name}}",
           "range": true,
-          "refId": "A"
+          "refId": "A",
+          "useBackend": false
         }
       ],
       "title": "Sensor Light ",
@@ -695,13 +719,17 @@
             "type": "prometheus",
             "uid": "${DS_PROMETHEUS}"
           },
-          "editorMode": "code",
+          "disableTextWrap": false,
+          "editorMode": "builder",
           "exemplar": false,
-          "expr": "sensor_is_motion_detected",
+          "expr": "sum by(detected_period) (sensor_is_motion_detected{job=\"$job\"})",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
           "instant": false,
           "legendFormat": "Motion - {{detected_period}}",
           "range": true,
-          "refId": "A"
+          "refId": "A",
+          "useBackend": false
         }
       ],
       "title": "Sensor Motion",
@@ -743,7 +771,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -783,13 +812,17 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "editorMode": "code",
+              "disableTextWrap": false,
+              "editorMode": "builder",
               "exemplar": false,
-              "expr": "sensor_is_opened",
+              "expr": "sum by(detected_period) (sensor_is_opened{job=\"$job\"})",
+              "fullMetaSearch": false,
+              "includeNullMetadata": true,
               "instant": false,
               "legendFormat": "Opened- {{detected_period}}",
               "range": true,
-              "refId": "A"
+              "refId": "A",
+              "useBackend": false
             }
           ],
           "title": "Sensor Opened",
@@ -856,7 +889,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "red"
+                    "color": "red",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -904,13 +938,17 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "editorMode": "code",
+              "disableTextWrap": false,
+              "editorMode": "builder",
               "exemplar": false,
-              "expr": "sensor_battery_status_percentage{job=\"$job\", name=~\"$instance\"}",
+              "expr": "sum by(name) (sensor_battery_status_percentage{job=\"$job\", name=~\"$instance\"})",
+              "fullMetaSearch": false,
+              "includeNullMetadata": true,
               "instant": false,
               "legendFormat": "{{name}} - Battery",
               "range": true,
-              "refId": "A"
+              "refId": "A",
+              "useBackend": false
             }
           ],
           "title": "Sensor Battery",
@@ -963,7 +1001,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "red"
+                    "color": "red",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -1014,13 +1053,17 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "editorMode": "code",
+              "disableTextWrap": false,
+              "editorMode": "builder",
               "exemplar": false,
-              "expr": "sensor_bluetooth_signal_quality{job=\"$job\", name=~\"$instance\"}",
+              "expr": "sum by(name) (sensor_bluetooth_signal_quality{job=\"$job\", name=~\"$instance\"})",
+              "fullMetaSearch": false,
+              "includeNullMetadata": true,
               "instant": false,
               "legendFormat": "{{name}} - Signal Quality",
               "range": true,
-              "refId": "A"
+              "refId": "A",
+              "useBackend": false
             }
           ],
           "title": "Sensor Bluetooth Signal Quality",
@@ -1073,7 +1116,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "red"
+                    "color": "red",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -1124,13 +1168,17 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "editorMode": "code",
+              "disableTextWrap": false,
+              "editorMode": "builder",
               "exemplar": false,
-              "expr": "sensor_bluetooth_signal_strength{job=\"$job\", name=~\"$instance\"}",
+              "expr": "sum by(name) (sensor_bluetooth_signal_strength{job=\"$job\", name=~\"$instance\"})",
+              "fullMetaSearch": false,
+              "includeNullMetadata": true,
               "instant": false,
               "legendFormat": "{{name}} - Signal Stength",
               "range": true,
-              "refId": "A"
+              "refId": "A",
+              "useBackend": false
             }
           ],
           "title": "Sensor Bluetooth  Signal Stength",
@@ -1165,7 +1213,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "red"
+                    "color": "red",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -1215,13 +1264,17 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "editorMode": "code",
+              "disableTextWrap": false,
+              "editorMode": "builder",
               "exemplar": false,
-              "expr": "sensor_battery_status_percentage{job=\"$job\", name=~\"$instance\"}",
+              "expr": "sum by(name) (sensor_battery_status_percentage{job=\"$job\", name=~\"$instance\"})",
+              "fullMetaSearch": false,
+              "includeNullMetadata": true,
               "instant": false,
               "legendFormat": "{{name}} - Battery",
               "range": true,
-              "refId": "A"
+              "refId": "A",
+              "useBackend": false
             }
           ],
           "title": "Sensor Battery",
@@ -1242,7 +1295,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "red"
+                    "color": "red",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -1292,13 +1346,17 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "editorMode": "code",
+              "disableTextWrap": false,
+              "editorMode": "builder",
               "exemplar": false,
-              "expr": "sensor_bluetooth_signal_quality{job=\"$job\", name=~\"$instance\"}",
+              "expr": "sum by(name) (sensor_bluetooth_signal_quality{job=\"$job\", name=~\"$instance\"})",
+              "fullMetaSearch": false,
+              "includeNullMetadata": true,
               "instant": false,
               "legendFormat": "{{name}} - Signal Quality",
               "range": true,
-              "refId": "A"
+              "refId": "A",
+              "useBackend": false
             }
           ],
           "title": "Sensor Bluetooth Signal Quality",
@@ -1319,7 +1377,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "red"
+                    "color": "red",
+                    "value": null
                   },
                   {
                     "color": "yellow",
@@ -1369,13 +1428,17 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "editorMode": "code",
+              "disableTextWrap": false,
+              "editorMode": "builder",
               "exemplar": false,
-              "expr": "sensor_bluetooth_signal_strength{job=\"$job\", name=~\"$instance\"}",
+              "expr": "sum by(name) (sensor_bluetooth_signal_strength{job=\"$job\", name=~\"$instance\"})",
+              "fullMetaSearch": false,
+              "includeNullMetadata": true,
               "instant": false,
               "legendFormat": "{{name}} - Signal Stength",
               "range": true,
-              "refId": "A"
+              "refId": "A",
+              "useBackend": false
             }
           ],
           "title": "Sensor Bluetooth  Signal Stength",
@@ -1396,7 +1459,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   }
                 ]
               },
@@ -1434,13 +1498,17 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "editorMode": "code",
+              "disableTextWrap": false,
+              "editorMode": "builder",
               "exemplar": false,
-              "expr": "sensor_up_since_gauge{job=\"$job\", name=~\"$instance\"}",
+              "expr": "sum by(name) (sensor_up_since_gauge{job=\"$job\", name=~\"$instance\"})",
+              "fullMetaSearch": false,
+              "includeNullMetadata": true,
               "instant": false,
               "legendFormat": "{{name}}",
               "range": true,
-              "refId": "A"
+              "refId": "A",
+              "useBackend": false
             }
           ],
           "title": "Sensor Up Since ",
@@ -1461,7 +1529,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "blue"
+                    "color": "blue",
+                    "value": null
                   }
                 ]
               },
@@ -1499,13 +1568,17 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "editorMode": "code",
+              "disableTextWrap": false,
+              "editorMode": "builder",
               "exemplar": false,
-              "expr": "sensor_connected_since_gauge{job=\"$job\", name=~\"$instance\"}",
+              "expr": "sum by(name) (sensor_connected_since_gauge{job=\"$job\", name=~\"$instance\"})",
+              "fullMetaSearch": false,
+              "includeNullMetadata": true,
               "instant": false,
               "legendFormat": "{{name}}",
               "range": true,
-              "refId": "A"
+              "refId": "A",
+              "useBackend": false
             }
           ],
           "title": "Sensor Connected Since ",
@@ -1526,7 +1599,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "text"
+                    "color": "text",
+                    "value": null
                   }
                 ]
               },
@@ -1564,13 +1638,17 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "editorMode": "code",
+              "disableTextWrap": false,
+              "editorMode": "builder",
               "exemplar": false,
-              "expr": "sensor_last_seen_gauge{job=\"$job\", name=~\"$instance\"}",
+              "expr": "sum by(name) (sensor_last_seen_gauge{job=\"$job\", name=~\"$instance\"})",
+              "fullMetaSearch": false,
+              "includeNullMetadata": true,
               "instant": false,
               "legendFormat": "{{name}}",
               "range": true,
-              "refId": "A"
+              "refId": "A",
+              "useBackend": false
             }
           ],
           "title": "Sensor Last Seen",
@@ -1591,7 +1669,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   }
                 ]
               },
@@ -1629,13 +1708,17 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "editorMode": "code",
+              "disableTextWrap": false,
+              "editorMode": "builder",
               "exemplar": false,
-              "expr": "sensor_info{job=\"$job\", name=~\"$instance\"}",
+              "expr": "sum by(firmwareVersion) (sensor_info{job=\"$job\", name=~\"$instance\"})",
+              "fullMetaSearch": false,
+              "includeNullMetadata": true,
               "instant": false,
               "legendFormat": "{{firmwareVersion}} ",
               "range": true,
-              "refId": "A"
+              "refId": "A",
+              "useBackend": false
             }
           ],
           "title": "Firmware Version",
@@ -1656,7 +1739,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   }
                 ]
               },
@@ -1694,14 +1778,18 @@
                 "type": "prometheus",
                 "uid": "${DS_PROMETHEUS}"
               },
-              "editorMode": "code",
+              "disableTextWrap": false,
+              "editorMode": "builder",
               "exemplar": false,
-              "expr": "sensor_info{job=\"$job\", name=~\"$instance\"}",
+              "expr": "sum by(hardwareRevision) (sensor_info{job=\"$job\", name=~\"$instance\"})",
+              "fullMetaSearch": false,
               "hide": false,
+              "includeNullMetadata": true,
               "instant": false,
               "legendFormat": "{{hardwareRevision}}",
               "range": true,
-              "refId": "B"
+              "refId": "B",
+              "useBackend": false
             }
           ],
           "title": "Hardware Version",
@@ -1722,7 +1810,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -1745,7 +1834,8 @@
                       "mode": "absolute",
                       "steps": [
                         {
-                          "color": "red"
+                          "color": "red",
+                          "value": null
                         },
                         {
                           "color": "green",
@@ -1768,7 +1858,8 @@
                       "mode": "absolute",
                       "steps": [
                         {
-                          "color": "red"
+                          "color": "red",
+                          "value": null
                         },
                         {
                           "color": "green",
@@ -1985,12 +2076,14 @@
   ],
   "refresh": "",
   "schemaVersion": 39,
-  "tags": [],
+  "tags": [
+    "environment"
+  ],
   "templating": {
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "default",
           "value": "default"
         },
@@ -1998,7 +2091,7 @@
         "includeAll": false,
         "label": "Prometheus",
         "multi": false,
-        "name": "DS_PROMETHEUS",
+        "name": "datasource",
         "options": [],
         "query": "prometheus",
         "queryValue": "",
@@ -2058,13 +2151,13 @@
     ]
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "Unifi Protect - Sensors",
   "uid": "edk4c0ult4tmoc",
-  "version": 3,
+  "version": 2,
   "weekStart": ""
 }
