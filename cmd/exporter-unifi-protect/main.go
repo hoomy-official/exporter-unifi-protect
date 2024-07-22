@@ -3,6 +3,8 @@ package main
 import (
 	_ "embed"
 
+	kongyaml "github.com/alecthomas/kong-yaml"
+
 	"github.com/alecthomas/kong"
 	"github.com/hoomy-official/exporter-unifi-protect/cmd/exporter-unifi-protect/commads"
 	c "github.com/hoomy-official/go-shared/pkg/cmd"
@@ -37,6 +39,7 @@ func main() {
 		kong.Name(name),
 		kong.Description(description),
 		kong.UsageOnError(),
+		kong.Configuration(kongyaml.Loader, "/etc/unifi-protect/config.yaml", "~/.hoomy/unifi-protect.yaml"),
 	)
 
 	ctx.FatalIfErrorf(ctx.Run(cli.Commons))
