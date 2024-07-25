@@ -38,7 +38,7 @@ endpoint.
 Clone the repository to get started with the exporter:
 
 ```shell
-git clone https://github.com/merlindorin/exporter-unifi-protect.git
+git clone https://github.com/hoomy-official/exporter-unifi-protect.git
 cd exporter-unifi-protect
 ```
 
@@ -116,4 +116,4 @@ request. For major changes, please open an issue first to discuss what you would
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - [see the LICENSE file for details](./LICENSE.md).
