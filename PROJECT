@@ -1,0 +1,9 @@
+NAME=exporter-unifi-protect
+DISPLAY_NAME=unofficial Unifi Protect Exporter
+DESCRIPTION=Exporter for UniFi Protect is a Prometheus exporter designed to help monitor your UniFi Protect setup by exporting relevant metrics to Prometheus.
+SOURCE=https://github.com/hoomy-official/exporter-unifi-protect
+
+GITHUB_OWNER=hoomy-official
+GITHUB_REPOSITORY=exporter-unifi-protect
+
+DOCKER_REGISTRY=ghcr.io/hoomy-official/exporter-unifi-protect
