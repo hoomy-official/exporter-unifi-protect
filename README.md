@@ -93,6 +93,10 @@ scrape_configs:
 
 Replace `<exporter-host>` and `<port>` with the appropriate values for your setup.
 
+## Integrate with Grafana
+
+To integrate the metrics from Prometheus into Grafana, ensure the Prometheus is added as a Datasource. Next you can import the example dashboard from `./compose/grafana/unifi-protect/unifi-protect-dashboard.json`
+
 ## CLI Reference
 
 The exporter provides several command-line options for configuring its behavior:
