@@ -4,6 +4,7 @@ go 1.21.7
 
 require (
 	github.com/alecthomas/kong v0.8.1
+	github.com/alecthomas/kong-yaml v0.2.0
 	github.com/hoomy-official/go-shared v0.0.0-20240302121620-6c18a355f8e4
 	github.com/hoomy-official/go-unifi-protect v0.0.0-20240228010302-67430585a319
 	github.com/prometheus/client_golang v1.19.0
