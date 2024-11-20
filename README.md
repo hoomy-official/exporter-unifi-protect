@@ -1,5 +1,7 @@
 # Exporter for UniFi Protect
 
+> ⚠️ Sensors are the only component exposed as metrics. Feel free to contribute to add more.
+
 Exporter for UniFi Protect is a Prometheus exporter designed to help monitor your UniFi Protect setup by exporting
 relevant metrics to Prometheus. This enables better integration with Prometheus monitoring solutions, ensuring you have
 insights into the performance and status of your UniFi Protect cameras and other devices.
